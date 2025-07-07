@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 
 @Getter
-public class AccountLogRes {
+public class AccountLoginRes {
     private int id;
     @JsonIgnore
     private String loginPw;

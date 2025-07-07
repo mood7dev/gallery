@@ -1,4 +1,10 @@
 package kr.co.wikibook.gallery.account;
 
-public interface AcoountMapper {
+import kr.co.wikibook.gallery.account.model.AccountLoginReq;
+import kr.co.wikibook.gallery.account.model.AccountLoginRes;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface AccountMapper {
+    AccountLoginRes findByLoginIdAndLoginPw(AccountLoginReq req);
 }
