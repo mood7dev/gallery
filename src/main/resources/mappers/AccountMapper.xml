@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.wikibook.gallery.item.AccountMapper">
+<mapper namespace="kr.co.wikibook.gallery.account.AccountMapper">
 
-    <select id="findAllByIdIn">
+    <insert id="save" parameterType="kr.co.wikibook.gallery.account.model.AccountJoinReq">
+    INSERT INTO members (name, login_id, login_pw)
+    VALUES(#{name},#{loginId},#{loginPw})
+    </insert>
+
+    <select id="findByLoginId">
     SELECT id, login_pw
     FROM members
     WHERE login_id = #{loginId}
-    AND login_pw = #{loginPw}
     </select>
 </mapper>
