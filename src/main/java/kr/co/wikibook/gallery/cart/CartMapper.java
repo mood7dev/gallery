@@ -18,5 +18,8 @@ public interface CartMapper {
     int save(CartPostReq p);
 
     // 장바구니 삭제
-    int deleteByMemberIdAndItemId(CartDeleteReq p);
+    int deleteByCartIdAndMemberId(CartDeleteReq p);
+
+    // 장바구니 전체 삭제
+    int deleteAllCart(int memberId);
 }

@@ -49,11 +49,20 @@ public class CartController {
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> delete(HttpServletRequest httpReq, @ModelAttribute CartDeleteReq p) {
+    //부분 삭제
+    @DeleteMapping("/{cartId}")
+    public ResponseEntity<?> delete(HttpServletRequest httpReq, @PathVariable int cartId) {
         int loggedInMemberId = (int)HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
-        p.setMemberId(loggedInMemberId);
+       CartDeleteReq p = new CartDeleteReq(cartId, loggedInMemberId);
         int result = cartService.remove(p);
+        return ResponseEntity.ok(result);
+    }
+
+    //전체 삭제
+    @DeleteMapping
+    public ResponseEntity<?> deleteAll(HttpServletRequest httpReq, @ModelAttribute CartDeleteReq p) {
+        int loggedInMemberId = (int)HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
+        int result = cartService.removeAll(loggedInMemberId);
         return ResponseEntity.ok(result);
     }
 }

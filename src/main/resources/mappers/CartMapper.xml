@@ -12,19 +12,23 @@
         SELECT COUNT(*) FROM carts WHERE member_id = #{memberId} AND item_id = #{itemId}
     </select>
 
-    <select id="findAllWithItemByMemberId" parameterType="int" resultType="kr.co.wikibook.gallery.cart.model.CartGetRes">
-        SELECT c.id, i.name, i.price, i.img_path AS imgPath, i.discount_per AS discountPer
+    <select id="findAllWithItemByMemberId">
+        SELECT c.id, c.item_id, i.name, i.price, i.img_path AS imgPath, i.discount_per AS discountPer
         FROM carts c
         JOIN items i ON i.id = c.item_id
         WHERE c.member_id = #{memberId}
     </select>
 
-    <delete id="deleteByMemberIdAndItemId">
+    <delete id="deleteByCartIdAndMemberId">
         DELETE FROM carts
-        WHERE member_id = #{memberId}
-        AND item_id = #{itemId}
+        WHERE id = #{cartId}
+        AND member_id = #{memberId}
     </delete>
 
+    <delete id="deleteAllCart">
+        DELETE FROM carts
+        WHERE member_id = #{memberId}
+    </delete>
 </mapper>
 <!--
 이 경우 id는 파라미터로 넘기지 않아도 되고, 삽입 후 MyBatis가 자동으로 생성된 키를 객체에 세팅
