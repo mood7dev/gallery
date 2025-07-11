@@ -4,10 +4,12 @@
 <mapper namespace="kr.co.wikibook.gallery.order.OrderItemMapper">
     <insert id="save">
         INSERT INTO order_items
-        (id, order_id, item_id)
+        (order_id, item_id)
         VALUES
-        <foreach collection="itemsIds" item="item" separator=",">
+        <foreach collection="itemIds" item="itemId" separator=",">
             (#{orderId}, #{itemId})
         </foreach>
     </insert>
 </mapper>
+
+

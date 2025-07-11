@@ -3,8 +3,6 @@ package kr.co.wikibook.gallery.item;
 import kr.co.wikibook.gallery.item.model.ItemGetRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Member;
 import java.util.List;
 
 @Service
